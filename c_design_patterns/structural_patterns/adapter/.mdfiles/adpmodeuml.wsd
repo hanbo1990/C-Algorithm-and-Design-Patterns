@@ -1,0 +1,38 @@
+' @startuml
+' Target <-- Adapter
+
+' @enduml
+
+@startuml
+Client --> Adapter
+Adaptee <-- Adapter
+
+
+class Client {
+    adapter : Adapter
+    doWork()
+    
+}
+note left of Client
+  <b>doWork()</b>
+  <u>...</u>
+  <u>adapter.Request()</u>
+  <u>...</u>
+end note
+
+class Adapter {
+    adaptee : Adaptee
+    Request()
+}
+note left of Adapter
+  <b>Request()</b>
+  <u>...</u>
+  <u>adaptee.SpecificRequest()</u>
+  <u>...</u>
+end note
+
+class Adaptee {
+    SpecificRequest()
+}
+
+@enduml
